@@ -113,6 +113,7 @@ def sliding_window(a, b, c):
     return a[b: b + c] # The type of the output is string
 ```
 
+<br>
 
 ### 4. Function: find_prime
 This function is to find the first prime of specific width for the iterable, whcih combines three functions above.  
