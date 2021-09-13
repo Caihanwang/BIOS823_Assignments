@@ -1,7 +1,7 @@
 ---
 title: "BIOS 823 Homework 2: Number theory and a Google recruitment puzzle"
 layout: post
-date: 2021-09-3 22:48
+date: 2021-09-12 22:48
 # image: /assets/images/markdown.jpg
 headerImage: false
 # tag:
