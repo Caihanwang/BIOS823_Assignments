@@ -16,7 +16,7 @@ description: 823 HW3
 
 ## Introduction
 
-This assignment use the data sets from [link](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-13). All data sets are relevent to the malaria disease. In order to do a better interaction, I choose plotly to visulize data, because it is more interactive, which means in this library, when we move our cursor over the plot, we can see the specific value of each point. And also, I choose scatter, line and violin plots to visulize the data comprehensively and set some buttons to make plots more interactive.
+This assignment use the data sets from [link](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-13). All data sets are relevent to the malaria disease. In order to do a better interaction, I choose plotly to visulize data, because in this library, when we move our cursor over the plot, we can see the specific value of each point. And also, I choose scatter, line and violin plots to visulize the data comprehensively and set some buttons to make plots more interactive.
 
 ---
 
@@ -123,7 +123,7 @@ malaria_inc = pd.read_csv(url3, index_col=0).reset_index()
 malaria_inc.head()
 ```
 ![image.png](https://i.loli.net/2021/10/02/Sz7vT3wRldmXBaq.png)  
-As we can see in the table, the data cover the number of malaria deaths from 1990 to 2016 for 5 age groups. In order to show the difference in deaths between each group and trend of all years, I choose line plot to visualize (x axis is years, y axis is number of deaths and age groups are in different colors). And also, I add a interactive button over the plot so that users can choose different country by themselves. In addition, when moving cursor on points in the plot, we can also see the specifc value of the point. However, there are some countries that number of malaria deaths is zero in all years. For this condition, I consider it as missing value and I will not plot the data of these countries.  
+As we can see in the table, the data cover the incidence of malaria in 2000, 2005, 2010, 2015 for different countries. In order to show the distribution of makaria incidence in different years and calculate the median incidence of all years, I choose violin plot with all points besides (x axis is years, y axis is incidence of malaria). In addition, when moving cursor on points in the plot, we can also see the specifc value of the point. Also, when moving cursor on the violin, we can see the min, max. 1st quarter, 3rd quarter and median on the plot.  
 ```python
 # Data Visulization for malaria_inc data set
 fig = px.violin(malaria_inc,
