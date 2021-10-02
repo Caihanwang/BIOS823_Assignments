@@ -14,6 +14,10 @@ description: 823 HW3
 
 # Data Visulization
 
+## Introduction
+
+This assignment use the data set from link{https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-13}
+
 ## Plot of malaria_deaths Data Set
 
 Firstly, I read in the data set by pandas using raw data url. And then, we can view first a few lines of the data set.
