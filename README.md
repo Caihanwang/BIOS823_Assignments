@@ -16,6 +16,8 @@ description: 823 HW3
 
 ## Introduction
 
+[@preview](https://github.com/junkawa/figma_jp)
+
 This blog use the data sets from [Science and Engineering PhDs awarded in the US](https://ncses.nsf.gov/pubs/nsf19301/data). In order to explore the data of PhDs awarded in the US by different locations and majors, I choose the table 7 of these data sets to do some analysis and visualization, which is "Doctorate-granting institutions, by state or location and major science and engineering fields of study: 2017".  
 
 
