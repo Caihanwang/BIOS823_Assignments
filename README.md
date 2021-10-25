@@ -14,11 +14,22 @@ description: 823 HW3
 
 # Is there life after graduate school?
 
+
+## [Dashboard](https://phdgraduates.herokuapp.com/)
+The final Dashboard I created is placed [above](https://phdgraduates.herokuapp.com/). Feel free to explore in my website!!!  
+
+---
+
 ## Introduction
+This blog use the data sets from [Science and Engineering PhDs awarded in the US](https://ncses.nsf.gov/pubs/nsf19301/data). In order to explore the data of PhDs awarded in the US by different locations and majors, I choose the table 7 of these data sets to do some analysis and visualization, which is "Doctorate-granting institutions, by state or location and major science and engineering fields of study: 2017". You can access the full code of the work in my [github](https://github.com/Caihanwang/BIOS823_Assignments/tree/Assignment-4).  
 
-[@preview](https://github.com/junkawa/figma_jp)
+I have been curious about several questions about PhDs awarded in the US for a long time. To be more specific, which state has the most PhD graduates of different fields in a year? Which university is the most prolific for doctoral students in each state? Which is the most popular major for PhD students in US? In different major, which university is the best?  
 
-This blog use the data sets from [Science and Engineering PhDs awarded in the US](https://ncses.nsf.gov/pubs/nsf19301/data). In order to explore the data of PhDs awarded in the US by different locations and majors, I choose the table 7 of these data sets to do some analysis and visualization, which is "Doctorate-granting institutions, by state or location and major science and engineering fields of study: 2017".  
+
+
+
+
+
 
 
 
