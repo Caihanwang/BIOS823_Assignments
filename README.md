@@ -146,7 +146,7 @@ for i in ['All Fields', 'Engineering', 'Science', 'Other']:
 
 ### Which university was the most prolific for doctoral students in each state in 2017?
 To answer the question, I choose to draw a bar plot to show the number of PhD graduates in different institutions. The plot is as following. As I just mentioned above, California had the most PhD graduates in all fields. We can set the dropdown menu to California to see the breakdown. In California, UCB had the most PhD graduates in 2017.  
-![plot2.gif](https://i.loli.net/2021/10/26/Dh2KyoVeJrFakM5.gif)  
+![plot2.gif](https://i.loli.net/2021/10/26/1JmRYjeOfoXaQkH.gif)
 
 The figure plotting code is as following:
 ```python
@@ -181,7 +181,7 @@ for i in state_names:
 <br>  
 
 ### Which is the most popular major for PhD students in US in 2017?
-To answer the question, I choose to draw a bar plot to show the number of PhD graduates in different majors. The plot is as following:  
+To answer the question, I choose to draw a bar plot to show the number of PhD graduates in different majors. The plot is as following. As we can see, there was the most PhD graduates in the biologcial and biomedical sciences in 2017.  
 ![plot3.gif](https://i.loli.net/2021/10/26/u9S5kpgKE3NcZe2.gif)  
 
 The figure plotting code is as following:  
@@ -207,7 +207,7 @@ figs3.update_layout(
 
 
 ### In different major, which university had the most PhDs graduates in 2017?
-To answer the question, I choose to draw a bar plot to show top 10 institutions with the most PhD graduates in different majors. The plot is as following:  
+To answer the question, I choose to draw a bar plot to show top 10 institutions with the most PhD graduates in different majors. The plot is as following. In biological and biomedical sciences, Harvard University had the most PhD graduates in 2017. In computer and information sciences, Carnegie Mellon University had the most PhD graduates in 2017.   
 ![plot4.gif](https://i.loli.net/2021/10/26/g9RCqs6TLxbf1EJ.gif)
 
 The figure plotting code is as following:  
