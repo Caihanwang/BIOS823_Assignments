@@ -426,7 +426,12 @@ def update_graph3(fig_name):
 
 ## Deploy Dashboard to Public Website<a name="deploy"></a>
 
-I use heraku to deploy my website ([tutorial](https://medium.com/analytics-vidhya/how-to-deploy-a-dashboard-to-heroku-3b458f321c93)). Firstly, I signed in my account on [heraku](https://dashboard.heroku.com/apps) and created an app in my account. Second, I created an empty folder in local machine and put app.py, requirement.txt and Procfile in it. Then, I initialized the folder and activated a virtual environment. Finally, I used git add, git commit, git push to deploy my app to Heroku. The final dashboard is [here](https://phdgraduates.herokuapp.com/).
+I use heraku to deploy my website ([tutorial](https://medium.com/analytics-vidhya/how-to-deploy-a-dashboard-to-heroku-3b458f321c93)).  
+Firstly, I signed in my account on [heraku](https://dashboard.heroku.com/apps) and created an app in my account.  
+Second, I created an empty folder in local machine and put app.py, requirement.txt and Procfile in it.  
+Then, I initialized the folder and activated a virtual environment.  
+Finally, I used git add, git commit, git push to deploy my app to Heroku.  
+The final dashboard is [here](https://phdgraduates.herokuapp.com/).  
 
 ---
 
