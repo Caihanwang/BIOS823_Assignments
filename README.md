@@ -29,49 +29,71 @@ With all these questions in mind, I choose to explore the table 7 of these data 
 
 ---
 
-## Plot of malaria_deaths Data Set
-
-Firstly, I read in the data set by pandas using raw data url. And then, we can view first a few lines of the data set.
+## Data Preprocessing
+Firstly, I read in the data set by pandas using raw data url. The data is multi-index and it is xlsx, so I use read_excel function.
 ```python
-url1 = "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-11-13/malaria_deaths.csv"
-malaria_deaths = pd.read_csv(url1, index_col=0).reset_index()
-# Quick View of Data Sets
-malaria_deaths.head()
+# Read in data
+with warnings.catch_warnings(record=True):
+    warnings.simplefilter("always")
+    df = pd.read_excel("https://ncses.nsf.gov/pubs/nsf19301/assets/data/tables/sed17-sr-tab007.xlsx",
+     engine="openpyxl", header = [3,4,5])
+     
+df.head()
 ```
-![image.png](https://i.loli.net/2021/10/02/QH3T6zGm5RnEAxK.png)  
-As we can see in the table, the data cover the number of malaria deaths from 1990 to 2016 for different countries. In order to show the number of malaria deaths for each country, I choose scatter plot to visualize (x axis is different countries and y axis is number of deaths) and add a animation bar of years under the plot so that the user can choose different year by themselves. In addition, the bar can go from 1990 to 2016 automatically, which can easily show the trend of number over years. Also, when moving cursor on points in the plot, we can also see the specifc value of the point. Because there are too many country codes on the x axis and it also shows some of them, we can zoom the plot (on the right up corner of the plot) to see the specific country.
+The raw data looks like:  
+![image.png](https://i.loli.net/2021/10/26/krn8mGHA5xsDi29.png)  
+
+Secondly, I use functions in pandas library to clean the data.  
 ```python
-# Data Visulization for malaria_deaths data set
-fig = px.scatter(malaria_deaths,
-                ## set x and y
-                x = "Code",
-                y = "Deaths - Malaria - Sex: Both - Age: Age-standardized (Rate) (per 100,000 people)",
-                
-                ## make animation bar
-                animation_frame="Year",
-                 
-                ## set color
-                color = "Deaths - Malaria - Sex: Both - Age: Age-standardized (Rate) (per 100,000 people)",
-                 
-                ## rename labels
-                labels = {
-                         "Code": "Country Code",   
-                         "Deaths - Malaria - Sex: Both - Age: Age-standardized (Rate) (per 100,000 people)": "Number of Deaths"
-                     },
-                
-                ## set hover name and title
-                hover_name = "Entity",
-                title = "Number of Malaria Deaths over the world"
-                )
+# create a state names list by us packages
+state_names = [state.name for state in us.states.STATES_AND_TERRITORIES]
+state_names = state_names + ["District of Columbia"]
 
-# reset the size of plot and ylab name
-fig.update_layout(margin=dict(l=20, r=20, t =30, b=100),
-                 yaxis_title="Number of Deaths (per 100,000 people)")
+# Add two columns: State, Code
+df["State"] = df[df.columns[0]][df[df.columns[0]].isin(state_names)]
+df["State"] = df["State"].fillna(method = "ffill")
+df = df.dropna()
+df["Code"] = [us.states.lookup(i).abbr for i in df["State"]]
 
-fig.show()
+# Add one columns: Other
+cols = []
+for i in list(df.columns):
+    if i[2] == "Total":
+        cols.append(i)
+df[("Other", "Other", "Other")] = df[df.columns[1]] - df[cols].sum(axis = 1)
+
+# Melt and clean data
+df2 = pd.melt(df, 
+        id_vars = [('State or location and institution',
+                     'Unnamed: 0_level_1',
+                     'Unnamed: 0_level_2'), "State", "Code"],
+        value_name = "Number",
+        var_name = ["Field", "Major", "Specificity"]
+       )
+df2 = df2.rename(columns = {
+        ('State or location and institution', 'Unnamed: 0_level_1', 'Unnamed: 0_level_2'): "Institution"
+        })
+
+## Delete "All fields"
+df2 = df2.loc[df2['Field'] != "All fields" ]
+## Delete "All institutions"
+df2 = df2.loc[df2['Institution'] != "All institutions"]
+## Delete "Total"
+df2 = df2.loc[df2['Specificity'] != "Total"]
+## Delete States
+df2 = df2.loc[~df2['Institution'].isin(state_names)]
+## Rename unnamed rows
+Unname_list = [f"Unnamed: 2{a}_level_1" for a in range(1,10)]
+df2["Major"][df2["Major"].isin(Unname_list)] = "Engineering"
+df2["Major"][df2["Major"] == "Unnamed: 1_level_1"] = "All majors"
+df2["Specificity"][df2["Specificity"] == "Unnamed: 1_level_2"] = "All specificity"
+## Reset index
+df2 = df2.reset_index(drop = True)
+## df2 is the clean version of the data
+df2.head()
 ```
-The output is as following:
-![plot1.gif](https://i.loli.net/2021/10/02/HX2Vm9fUkDthNSZ.gif)  
+The clean data is as following:  
+![image.png](https://i.loli.net/2021/10/26/wgOS4kMpZGIJUhl.png)
 
 
 ---
