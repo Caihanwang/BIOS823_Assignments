@@ -425,4 +425,6 @@ def update_graph3(fig_name):
 
 ## Deploy Dashboard to Public Website<a name="deploy"></a>
 
+I use heraku to deploy my website ([tutorial](https://medium.com/analytics-vidhya/how-to-deploy-a-dashboard-to-heroku-3b458f321c93))
+
 ---
