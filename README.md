@@ -22,6 +22,9 @@ description: 823 HW3
 5. [Dashboard](#dashboard)
 6. [Deploy Dashboard to Public Website](#deploy)
 
+---
+
+
 ## [Final Dashboard](https://phdgraduates.herokuapp.com/)<a name="finaldashboard"></a>
 The final Dashboard I created is placed [above](https://phdgraduates.herokuapp.com/). Feel free to explore in my website!!!  
 
