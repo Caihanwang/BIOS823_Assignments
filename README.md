@@ -2,8 +2,8 @@
 title: "BIOS 823 Homework 4: Is there life after graduate school?"
 layout: post
 date: 2021-10-25 22:48
-# image: /assets/images/markdown.jpg
-headerImage: false
+image: https://i.loli.net/2021/10/26/TBdMjnNcIeS7oKW.png
+headerImage: true
 tag:
 - python
 - BIOS823
