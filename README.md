@@ -101,6 +101,7 @@ The clean data is as following:
 ## Data Visualization and Dashboard
 
 ### Which state had the most PhD graduates of different fields in 2017?
+To answer the question, I choose to draw a choropleth plot to show the distribution of number of PhD graduates in the US. The plot is as following:
 
 
 ### Which university was the most prolific for doctoral students in each state in 2017?
