@@ -102,20 +102,133 @@ The clean data is as following:
 
 ### Which state had the most PhD graduates of different fields in 2017?
 To answer the question, I choose to draw a choropleth plot to show the distribution of number of PhD graduates in the US. The plot is as following:  
-![plot1.gif](https://i.loli.net/2021/10/26/ZuOWi3XwfFzjopG.gif)
+![plot1.gif](https://i.loli.net/2021/10/26/ZuOWi3XwfFzjopG.gif)  
+
+The figure plotting code is as following:
+```python
+# Plot1. State Map Plot
+## Prepare the data
+states = (
+    df2.groupby(["State", "Code", "Field"]).
+    sum().reset_index().
+    pivot(index = ["State","Code"], columns = "Field", values = "Number").
+    reset_index()
+)
+states["All Fields"] = states[["Engineering", "Other", "Science"]].sum(axis = 1)
+
+## figs1 plotting
+figs1 = []
+for i in ['All Fields', 'Engineering', 'Science', 'Other']:
+    fig = px.choropleth(states,  # Input Pandas DataFrame
+                        locations="Code",  # DataFrame column with locations
+                        color=i,  # DataFrame column with color values
+                        hover_name="State", # DataFrame column hover info
+                        color_continuous_scale="Reds",
+                        locationmode = 'USA-states') # Set to plot as US States
+    fig.update_layout(
+        title_text = 'Number of PhD Graduates by State', # Create a Title
+        geo_scope='usa',  # Plot only the USA instead of globe
+        title_x = 0.5
+    )
+    figs1.append(fig)
+```
+
+<br>  
 
 
 ### Which university was the most prolific for doctoral students in each state in 2017?
 To answer the question, I choose to draw a bar plot to show the number of PhD graduates in different institutions. The plot is as following:  
-![plot2.gif](https://i.loli.net/2021/10/26/Dh2KyoVeJrFakM5.gif)
+![plot2.gif](https://i.loli.net/2021/10/26/Dh2KyoVeJrFakM5.gif)  
+
+The figure plotting code is as following:
+```python
+# Plot2. Histogram by Institution
+## Prepare the data
+Institution = (
+    df2.groupby(["Institution", "State","Code", "Field"]).
+    sum().reset_index().
+    pivot(index = ["Institution", "State","Code"], columns = "Field", values = "Number").
+    reset_index()
+)
+
+## figs2 plotting
+figs2 = []
+for i in state_names:
+    fig = px.histogram(Institution[Institution["State"] == i], 
+                        x = "Institution", 
+                        y = ["Engineering", "Science", "Other"])
+    fig.update_layout(
+        title_text = 'Breakdown of Institutions by State', 
+        title_x = 0.5,
+        yaxis_title = "Count by Fields",
+        xaxis_title = None,
+        margin=dict(l=100, r=100)
+        )
+    # fig.update_layout(
+    #     {'plot_bgcolor': 'rgba(0, 0, 0, 0)'}
+    # )
+    figs2.append(fig)
+```
+
+<br>  
 
 ### Which is the most popular major for PhD students in US in 2017?
 To answer the question, I choose to draw a bar plot to show the number of PhD graduates in different majors. The plot is as following:  
-![plot3.gif](https://i.loli.net/2021/10/26/u9S5kpgKE3NcZe2.gif)
+![plot3.gif](https://i.loli.net/2021/10/26/u9S5kpgKE3NcZe2.gif)  
+
+The figure plotting code is as following:  
+```python
+# Plot3. different majors
+## Prepare the data
+specificity = df2.groupby("Specificity").sum().reset_index()
+specificity = specificity[specificity["Specificity"] != "Other"]
+
+## figs3 plotting
+figs3 = px.bar(specificity, 
+             y = "Specificity", x = "Number")
+figs3.update_layout(
+        title_text = 'Number of PhD Graduates Breakdown of Major', 
+        title_x = 0.5,
+        yaxis_title = None,
+        xaxis_title = "Count",
+        margin=dict(l=100, r=100)
+        )
+```        
+
+<br>  
+
 
 ### In different major, which university had the most PhDs graduates in 2017?
 To answer the question, I choose to draw a bar plot to show top 10 institutions with the most PhD graduates in different majors. The plot is as following:  
 ![plot4.gif](https://i.loli.net/2021/10/26/g9RCqs6TLxbf1EJ.gif)
+
+The figure plotting code is as following:  
+```python
+# Plot4. Top 10 institutions in different major
+## Prepare the data
+majors = df2.groupby(["Institution", "Specificity"]).sum().reset_index()
+
+## figs4 plotting
+majorlist = sorted(list(set(df2["Specificity"])))
+figs4 = []
+for i in majorlist:
+    major = (
+        majors[majors["Specificity"] == i].
+        sort_values(by = "Number", ascending = False).head(10)
+    )
+    fig = px.bar(major, 
+             x = "Institution", y = "Number")
+    fig.update_layout(
+        title_text = f'Top 10 Institutions with the Most PhD Graduates in {i}', 
+        title_x = 0.5,
+        yaxis_title = "Count",
+        xaxis_title = None,
+        margin=dict(l=20, r=20)
+        )
+    figs4.append(fig)
+```        
+
+<br>  
 
 ---
 
