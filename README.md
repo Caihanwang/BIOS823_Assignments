@@ -14,13 +14,20 @@ description: 823 HW3
 
 # Is there life after graduate school?
 
+## Table of Contents
+1. [Final Dashboard](#finaldashboard)
+2. [Introduction](#introduction)
+3. [Data Preprocessing](#datapreprocessing)
+4. [Data Visualization](#datavisualization)
+5. [Dashboard](#dashboard)
+6. [Deploy Dashboard to Public Website](#deploy)
 
-## [Final Dashboard](https://phdgraduates.herokuapp.com/)
+## [Final Dashboard](https://phdgraduates.herokuapp.com/)<a name="finaldashboard"></a>
 The final Dashboard I created is placed [above](https://phdgraduates.herokuapp.com/). Feel free to explore in my website!!!  
 
 ---
 
-## Introduction
+## Introduction<a name="introduction"></a>
 This blog use the data sets from [Science and Engineering PhDs awarded in the US](https://ncses.nsf.gov/pubs/nsf19301/data). In order to explore the data of PhDs awarded in the US by different locations and majors, I choose the table 7 of these data sets to do some analysis and visualization, which is "Doctorate-granting institutions, by state or location and major science and engineering fields of study: 2017". You can access the full code of the work in my [github](https://github.com/Caihanwang/BIOS823_Assignments/tree/Assignment-4).  
 
 I have been curious about several questions about PhDs awarded in the US for a long time. To be more specific, which state has the most PhD graduates of different fields in a year? Which university is the most prolific for doctoral students in each state? Which is the most popular major for PhD students in US? In different major, which university has the most PhD graduates?  
@@ -29,7 +36,7 @@ With all these questions in mind, I choose to explore the table 7 of these data 
 
 ---
 
-## Data Preprocessing
+## Data Preprocessing<a name="datapreprocessing"></a>
 Firstly, I read in the data set by pandas using raw data url. The data is multi-index and it is xlsx, so I use read_excel function.
 ```python
 # Read in data
@@ -98,7 +105,7 @@ The clean data is as following:
 
 ---
 
-## Data Visualization
+## Data Visualization<a name="datavisualization"></a>
 
 ### Which state had the most PhD graduates of different fields in 2017?
 To answer the question, I choose to draw a choropleth plot to show the distribution of number of PhD graduates in the US. The plot is as following:  
@@ -232,7 +239,7 @@ for i in majorlist:
 
 ---
 
-## Dashboard 
+## Dashboard<a name="dashboard"></a>
 
 ### Layout
 
@@ -416,6 +423,6 @@ def update_graph3(fig_name):
 
 ---
 
-## Deploy Dashboard to Public Website
+## Deploy Dashboard to Public Website<a name="deploy"></a>
 
 ---
