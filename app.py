@@ -202,7 +202,7 @@ app.layout = html.Div(children = [
                      ),
 
     # Subtitle 1
-    html.H3(children='Which state had the most Phd Graduates in 2017?',
+    html.H3(children='Which state had the most PhD graduates by field in 2017?',
             style = {'font-family':'Helvetica',
                      'font-size': '30px',
                      'width':'100%',
@@ -250,7 +250,7 @@ app.layout = html.Div(children = [
     
 
     # Subtitle 2
-    html.H3(children='Which institution had the most PhD graduates by state in 2017?',
+    html.H3(children='Which university was the most prolific for PhD students by state in 2017?',
             style = {'font-family':'Helvetica',
                      'font-size': '30px',
                      'width':'100%',
@@ -276,7 +276,7 @@ app.layout = html.Div(children = [
         ]),
 
     # Subtitle 3
-    html.H3(children='Which major had the most PhD graduates in US in 2017?',
+    html.H3(children='Which is the most popular major for PhD students in US in 2017?',
             style = {'font-family':'Helvetica',
                      'font-size': '30px',
                      'width':'100%',
