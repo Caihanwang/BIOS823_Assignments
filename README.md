@@ -25,15 +25,7 @@ This blog use the data sets from [Science and Engineering PhDs awarded in the US
 
 I have been curious about several questions about PhDs awarded in the US for a long time. To be more specific, which state has the most PhD graduates of different fields in a year? Which university is the most prolific for doctoral students in each state? Which is the most popular major for PhD students in US? In different major, which university is the best?  
 
-
-
-
-
-
-
-
-
-This assignment use the data sets from [link](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-13). All data sets are relevent to the malaria disease. In order to do a better interaction, I choose plotly to visulize data, because in this library, when we move our cursor over the plot, we can see the specific value of each point. And also, I choose scatter, line and violin plots to visulize the data comprehensively and set some buttons to make plots more interactive.
+With all these questions in mind, I choose to explore the table 7 of these data sets, which is "Doctorate-granting institutions, by state or location and major science and engineering fields of study: 2017". You can easily find all answers of the questions after data visualization!
 
 ---
 
