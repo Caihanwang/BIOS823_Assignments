@@ -108,7 +108,8 @@ The clean data is as following:
 ## Data Visualization<a name="datavisualization"></a>
 
 ### Which state had the most PhD graduates of different fields in 2017?
-To answer the question, I choose to draw a choropleth plot to show the distribution of number of PhD graduates in the US. The plot is as following:  
+To answer the question, I choose to draw a choropleth plot to show the distribution of number of PhD graduates in the US. The plot is as following. We can see that California had the most PhD graduates in all fields in 2017.  
+
 ![plot1.gif](https://i.loli.net/2021/10/26/ZuOWi3XwfFzjopG.gif)  
 
 The figure plotting code is as following:
@@ -144,7 +145,7 @@ for i in ['All Fields', 'Engineering', 'Science', 'Other']:
 
 
 ### Which university was the most prolific for doctoral students in each state in 2017?
-To answer the question, I choose to draw a bar plot to show the number of PhD graduates in different institutions. The plot is as following:  
+To answer the question, I choose to draw a bar plot to show the number of PhD graduates in different institutions. The plot is as following. As I just mentioned above, California had the most PhD graduates in all fields. We can set the dropdown menu to California to see the breakdown. In California, UCB had the most PhD graduates in 2017.  
 ![plot2.gif](https://i.loli.net/2021/10/26/Dh2KyoVeJrFakM5.gif)  
 
 The figure plotting code is as following:
