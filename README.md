@@ -101,17 +101,21 @@ The clean data is as following:
 ## Data Visualization and Dashboard
 
 ### Which state had the most PhD graduates of different fields in 2017?
-To answer the question, I choose to draw a choropleth plot to show the distribution of number of PhD graduates in the US. The plot is as following:
+To answer the question, I choose to draw a choropleth plot to show the distribution of number of PhD graduates in the US. The plot is as following:  
+![plot1.gif](https://i.loli.net/2021/10/26/ZuOWi3XwfFzjopG.gif)
 
 
 ### Which university was the most prolific for doctoral students in each state in 2017?
-
+To answer the question, I choose to draw a bar plot to show the number of PhD graduates in different institutions. The plot is as following:  
+![plot2.gif](https://i.loli.net/2021/10/26/Dh2KyoVeJrFakM5.gif)
 
 ### Which is the most popular major for PhD students in US in 2017?
-
+To answer the question, I choose to draw a bar plot to show the number of PhD graduates in different majors. The plot is as following:  
+![plot3.gif](https://i.loli.net/2021/10/26/u9S5kpgKE3NcZe2.gif)
 
 ### In different major, which university had the most PhDs graduates in 2017?
-
+To answer the question, I choose to draw a bar plot to show top 10 institutions with the most PhD graduates in different majors. The plot is as following:  
+![plot4.gif](https://i.loli.net/2021/10/26/g9RCqs6TLxbf1EJ.gif)
 
 ---
 
