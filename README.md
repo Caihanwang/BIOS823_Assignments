@@ -15,7 +15,7 @@ description: 823 HW3
 # Is there life after graduate school?
 
 
-## [Dashboard](https://phdgraduates.herokuapp.com/)
+## [Final Dashboard](https://phdgraduates.herokuapp.com/)
 The final Dashboard I created is placed [above](https://phdgraduates.herokuapp.com/). Feel free to explore in my website!!!  
 
 ---
@@ -98,7 +98,7 @@ The clean data is as following:
 
 ---
 
-## Data Visualization and Dashboard
+## Data Visualization
 
 ### Which state had the most PhD graduates of different fields in 2017?
 To answer the question, I choose to draw a choropleth plot to show the distribution of number of PhD graduates in the US. The plot is as following:  
@@ -229,6 +229,190 @@ for i in majorlist:
 ```        
 
 <br>  
+
+---
+
+## Dashboard 
+
+### Layout
+
+I set the layout for the dashboard in this part.  
+
+```python
+app.layout = html.Div(children = [
+
+    # Title
+    html.H1(children='PhD Graduates for United States in 2017',
+            style = {'font-family':'Helvetica',
+                     'font-size': '50px',
+                     # "font-color": "white",
+                     'width':'100%',
+                     'display': 'inline-block',
+                     'textAlign': 'center',
+                     #'background-image': 'url(https://i.loli.net/2021/10/25/YbNJ7aAvXMpwenu.png)',
+                     "background": "#0040FF"}
+                     ),
+
+    # Anthor
+    html.H2(children='Author: Caihan Wang',
+            style = {'font-family':'Helvetica',
+                     'font-size': '20px',
+                     'width':'100%',
+                     'display': 'inline-block',
+                     'textAlign': 'center'}
+                     ),
+
+    # Subtitle 1
+    html.H3(children='Which state had the most PhD graduates by field in 2017?',
+            style = {'font-family':'Helvetica',
+                     'font-size': '30px',
+                     'width':'100%',
+                     'display': 'inline-block',
+                     'textAlign': 'center',
+                     "background": "#5882FA"}
+                     ),    
+    # Figs1
+    html.Div(children = [
+
+        dcc.Graph(id='plot'),
+
+        html.Div('Change Field: ',
+                 style = {'font-family':'Helvetica',
+                          'font-size': '15px',
+                          'textAlign': 'right',
+                          'width':'35%',
+                          'display': 'inline-block'
+                          }),
+
+        html.Div('',
+                 style = {'font-family':'Helvetica',
+                          'font-size': '15px',
+                          'textAlign': 'right',
+                          'width':'5%',
+                          'display': 'inline-block'
+                          }),
+
+
+        dcc.RadioItems(
+            id='map',
+            options=[{'label': i, 'value': i} for i in figs_map],
+            value=figs_map[0],
+            labelStyle = {'display': 'inline-block', 
+                            'cursor': 'pointer', 
+                            'margin-right': '20px',
+                            },
+            style = {'font-family':'Helvetica',
+                     'font-size': '15px',
+                     'width':'60%',
+                     'textAlign': 'left',
+                     'display': 'inline-block'})
+                    ]),         
+
+    
+
+    # Subtitle 2
+    html.H3(children='Which university was the most prolific for PhD students by state in 2017?',
+            style = {'font-family':'Helvetica',
+                     'font-size': '30px',
+                     'width':'100%',
+                     'display': 'inline-block',
+                     'textAlign': 'center',
+                     "background": "#5882FA"}
+                     ),    
+
+    # Figs2
+    html.Div(children = [
+
+        dcc.Dropdown(
+            id = "institute",
+            options = [{"label": i, "value": i} for i in state_names],
+            value = state_names[0]
+        ),
+
+        dcc.Graph(id='histogram')
+                # style={"height": "60%", 
+                #         "width": "80%",
+                #         "textAlign": "center"}),
+
+        ]),
+
+    # Subtitle 3
+    html.H3(children='Which is the most popular major for PhD students in US in 2017?',
+            style = {'font-family':'Helvetica',
+                     'font-size': '30px',
+                     'width':'100%',
+                     'display': 'inline-block',
+                     'textAlign': 'center',
+                     "background": "#5882FA"}
+                     ),     
+
+    # Figs3
+    html.Div(children = [
+        dcc.Graph(figure = figs3)
+        ]),
+
+    # Subtitle 4
+    html.H3(children='Which institution had the most PhD graduates by major in 2017?',
+            style = {'font-family':'Helvetica',
+                     'font-size': '30px',
+                     'width':'100%',
+                     'display': 'inline-block',
+                     'textAlign': 'center',
+                     "background": "#5882FA"}
+                     ),                             
+
+    # Figs4
+    html.Div(children = [
+
+        dcc.Dropdown(
+            id = "major",
+            options = [{"label": i, "value": i} for i in majorlist],
+            value = "Anthropology"
+        ),
+
+        dcc.Graph(id='histogram2')
+                # style={"height": "60%", 
+                #         "width": "80%",
+                #         "textAlign": "center"}),
+
+        ])
+
+    ])
+```
+
+### App Callback
+
+Use app.callback to link the figure with the dashboard.  
+
+```python
+@app.callback(
+    Output('plot', 'figure'),
+    [Input('map', 'value')])
+
+def update_graph1(fig_name):
+    for i in range(len(figs_map)):
+        if fig_name == figs_map[i]:
+            return figs1[i]
+
+@app.callback(
+    Output('histogram', 'figure'),
+    [Input('institute', 'value')])
+
+def update_graph2(fig_name):
+    for i in range(len(state_names)):
+        if fig_name == state_names[i]:
+            return figs2[i]
+
+@app.callback(
+    Output('histogram2', 'figure'),
+    [Input('major', 'value')])
+
+def update_graph3(fig_name):
+    for i in range(len(majorlist)):
+        if fig_name == majorlist[i]:
+            return figs4[i]
+
+```
 
 ---
 
