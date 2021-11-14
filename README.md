@@ -31,7 +31,58 @@ In this blog, I trained a deep learning model to classify beetles, cockroaches a
 
 ## Data Preparation<a name="datapreparation"></a>
 
+```python
+# Import Packages
+import matplotlib.pyplot as plt
+import numpy as np
+import os
+import PIL
+import tensorflow as tf
 
+from tensorflow import keras
+from tensorflow.keras import layers
+from tensorflow.keras.models import Sequential
+import glob
+
+import pathlib
+# Read in dataset
+data_dir_train = pathlib.Path('insects/train')
+data_dir_test = pathlib.Path('insects/test')
+
+batch_size = 32
+img_height = 180
+img_width = 180
+
+# Create Train dataset
+train_ds = tf.keras.utils.image_dataset_from_directory(
+  data_dir_train,
+  image_size=(img_height, img_width),
+  batch_size=batch_size)
+
+# Create Test dataset
+test_ds = tf.keras.utils.image_dataset_from_directory(
+  data_dir_test,
+  image_size=(img_height, img_width),
+  batch_size=batch_size)
+  
+# Check the class names
+class_names = train_ds.class_names
+
+# Show some sample pictures
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10, 10))
+for images, labels in train_ds.take(1):
+  for i in range(9):
+    ax = plt.subplot(3, 3, i + 1)
+    plt.imshow(images[i].numpy().astype("uint8"))
+    plt.title(class_names[labels[i]])
+    plt.axis("off")
+```
+
+After read in the data, we can see some sample pictures here following:  
+
+![image.png](https://i.loli.net/2021/11/14/XvguCoQJy5qF9dx.png)
 
 ---
 
