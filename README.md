@@ -82,7 +82,7 @@ for images, labels in train_ds.take(1):
 
 After read in the data, we can see some sample pictures here following:  
 
-![image.png](https://i.loli.net/2021/11/14/XvguCoQJy5qF9dx.png)
+![image.png](https://i.loli.net/2021/11/14/CDXrTAles519xB8.png)
 
 ---
 
@@ -129,8 +129,8 @@ history = model.fit(
   epochs=epochs
 )
 ```
-I set the epoch = 10 and fit the model, the model fitting progress is as following. As we can see, the model can reach about 99% test accuracy in the end.   
-![image.png](https://i.loli.net/2021/11/14/HVmkIiXU5PjWsNZ.png)
+I set the epoch = 10 and fit the model, the model fitting progress is as following. As we can see, the model can reach about 100% test accuracy in the end.   
+![image.png](https://i.loli.net/2021/11/14/B467PvhoN1znrGC.png)
 
 
 ---
@@ -139,7 +139,7 @@ I set the epoch = 10 and fit the model, the model fitting progress is as followi
 ## Model Evaluation<a name="modelevaluate"></a>
 
 In this part, I evaluated the model by polt the accuarcy and the loss. The plot is as below:  
-![image.png](https://i.loli.net/2021/11/14/ZLNlgQBJEr7xKwd.png)
+![image.png](https://i.loli.net/2021/11/14/2RgtkGKCbvu4dTH.png)
 
 According to the figure above, the overall trend for the plot is that with the epoch increasing, the accuracy will increase and the loss will decrease.  
 <br>  
@@ -166,14 +166,14 @@ print(
     .format(class_names[np.argmax(score)], 100 * np.max(score))
 )
 ```
-And the output is "This image most likely belongs to dragonflies with a 57.96 percent confidence.", which is a correct classification.  
+And the output is "This image most likely belongs to dragonflies with a 83.99 percent confidence.", which is a correct classification.  
 
 
 ---
 
 ## Model Explanation by SHAP<a name="modelexplain"></a>
 
-In this part, 
+In this part, I converted the train and test dataset to matrix first, and then used GradientExplainer and shap_values function from SHAP to calculate the shap values. At last, produce the figure by the image_plot.  
 
 
 ```python
@@ -195,7 +195,10 @@ sv = explainer.shap_values(x_test[:20])
 print("     Reference            Beetles            Cockroach            Dragonflies")
 shap.image_plot([sv[i] for i in range(3)], x_test[0:5])
 ```
+The output is:  
+![image.png](https://i.loli.net/2021/11/14/kfQxHog9SOiw7CF.png)  
 
+In the figure above, 
 
 ---
 
