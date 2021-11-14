@@ -18,8 +18,8 @@ description: 823 HW5
 1. [Introduction](#introduction)
 2. [Data Preparation](#datapreparation)
 3. [Model Training and Testing](#modeltraining)
-4. [Model Evaluation](#modeevaluate)
-5. [Model Explanation by SHAP](#modelexplanation)
+4. [Model Evaluation](#modelevaluate)
+5. [Model Explanation by SHAP](#modelexplain)
 
 ---
 
