@@ -198,7 +198,7 @@ shap.image_plot([sv[i] for i in range(3)], x_test[0:5])
 The output is:  
 ![image.png](https://i.loli.net/2021/11/14/kfQxHog9SOiw7CF.png)  
 
-In the figure above, 
+In the figure above, red represents the positive SHAP value and blue represents the negative one. The true values of these five figures is cockroach, cockroach, dragonfly, dragonfly and dragonfly respectively. For the first two rows, we can see that in the cockroach column, they have the more red color than in other two columns, which means the predicted value of these first two figures are cockroach and they are correct predictions. for the last three rows, we can see that in the dragonflies column, they have the more red color than in other two columns, which means the predicted value of these first three figures are dragonflies and they are alao correct predictions.  
 
 ---
 
