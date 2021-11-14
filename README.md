@@ -23,13 +23,9 @@ description: 823 HW5
 
 ---
 
-
 ## Introduction<a name="introduction"></a>
-This blog use the data sets from [Science and Engineering PhDs awarded in the US](https://ncses.nsf.gov/pubs/nsf19301/data). You can access the full code of the work in my [github](https://github.com/Caihanwang/BIOS823_Assignments/tree/Assignment-4).  
 
-I have been curious about several questions about PhDs awarded in the US for a long time. To be more specific, which state has the most PhD graduates of different fields in a year? Which university is the most prolific for doctoral students in each state? Which is the most popular major for PhD students in US? In different major, which university has the most PhD graduates?  
-
-With all these questions in mind, I choose to explore the table 7 of these data sets, which is "Doctorate-granting institutions, by state or location and major science and engineering fields of study: 2017". You can easily find all answers of the questions after data visualization!
+In this blog, I trained a deep learning model to classify beetles, cockroaches and dragonflies using these [images](https://www.dropbox.com/s/fn73sj2e6c9rhf6/insects.zip?dl=0). You can also download the origin images from the [link](https://people.duke.edu/~ccc14/insects.zip). After model training, I evaluated the model by the accuracy and explained the model by [SHAP](https://github.com/slundberg/shap).
 
 ---
 
