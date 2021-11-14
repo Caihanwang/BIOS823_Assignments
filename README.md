@@ -129,8 +129,8 @@ history = model.fit(
   epochs=epochs
 )
 ```
-I set the epoch = 10 and fit the model, the model fitting progress is as following. As we can see, the model can reach about 100% test accuracy in the end.   
-![image.png](https://i.loli.net/2021/11/14/jmiPXhrC2YZqcIN.png)
+I set the epoch = 10 and fit the model, the model fitting progress is as following. As we can see, the model can reach about 99% test accuracy in the end.   
+![image.png](https://i.loli.net/2021/11/14/HVmkIiXU5PjWsNZ.png)
 
 
 ---
@@ -139,7 +139,7 @@ I set the epoch = 10 and fit the model, the model fitting progress is as followi
 ## Model Evaluation<a name="modelevaluate"></a>
 
 In this part, I evaluated the model by polt the accuarcy and the loss. The plot is as below:  
-![image.png](https://i.loli.net/2021/11/14/NtSFD7Pxr1uI8BR.png)
+![image.png](https://i.loli.net/2021/11/14/ZLNlgQBJEr7xKwd.png)
 
 According to the figure above, the overall trend for the plot is that with the epoch increasing, the accuracy will increase and the loss will decrease.  
 <br>  
@@ -166,13 +166,35 @@ print(
     .format(class_names[np.argmax(score)], 100 * np.max(score))
 )
 ```
-And the output is "This image most likely belongs to dragonflies with a 96.31 percent confidence.", which is accurate.  
+And the output is "This image most likely belongs to dragonflies with a 57.96 percent confidence.", which is a correct classification.  
 
 
 ---
 
 ## Model Explanation by SHAP<a name="modelexplain"></a>
 
+In this part, 
+
+
+```python
+# SHAP
+import shap
+
+# Convert to matrix
+x_train = np.concatenate([x for x , y in train_ds], axis = 0)
+y_train = np.concatenate([y for x , y in train_ds], axis = 0)
+
+x_test = np.concatenate([x for x , y in test_ds], axis = 0)
+y_test = np.concatenate([y for x , y in test_ds], axis = 0)
+
+explainer = shap.GradientExplainer(model, x_train)
+
+# Calculate shap values
+sv = explainer.shap_values(x_test[:20])
+
+print("     Reference            Beetles            Cockroach            Dragonflies")
+shap.image_plot([sv[i] for i in range(3)], x_test[0:5])
+```
 
 
 ---
