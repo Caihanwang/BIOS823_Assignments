@@ -17,8 +17,8 @@ description: 823 HW5
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Data Preparation](#datapreparation)
-3. [Model Training](#modeltraining)
-4. [Model Testing](#modeltesting)
+3. [Model Training and Testing](#modeltraining)
+4. [Model Evaluation](#modeevaluate)
 5. [Model Explanation by SHAP](#modelexplanation)
 
 ---
@@ -86,14 +86,62 @@ After read in the data, we can see some sample pictures here following:
 
 ---
 
-## Model Training<a name="modeltraining"></a>
+## Model Training and Testing<a name="modeltraining"></a>
+
+```python
+AUTOTUNE = tf.data.AUTOTUNE
+
+train_ds = train_ds.cache().shuffle(1000).prefetch(buffer_size=AUTOTUNE)
+test_ds = test_ds.cache().prefetch(buffer_size=AUTOTUNE)
+
+normalization_layer = layers.Rescaling(1./255)
+
+normalized_ds = train_ds.map(lambda x, y: (normalization_layer(x), y))
+image_batch, labels_batch = next(iter(normalized_ds))
+first_image = image_batch[0]
+# Notice the pixel values are now in `[0,1]`.
+print(np.min(first_image), np.max(first_image))
+
+num_classes = 3
+
+model = Sequential([
+  layers.Rescaling(1./255, input_shape=(img_height, img_width, 3)),
+  layers.Conv2D(16, 3, padding='same', activation='relu'),
+  layers.MaxPooling2D(),
+  layers.Conv2D(32, 3, padding='same', activation='relu'),
+  layers.MaxPooling2D(),
+  layers.Conv2D(64, 3, padding='same', activation='relu'),
+  layers.MaxPooling2D(),
+  layers.Flatten(),
+  layers.Dense(128, activation='relu'),
+  layers.Dense(num_classes)
+])
+
+model.compile(optimizer='adam',
+              loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+              metrics=['accuracy'])
+              
+# Fit the model
+epochs=10
+history = model.fit(
+  train_ds,
+  validation_data=test_ds,
+  epochs=epochs
+)
+```
+I set the epoch = 10 and fit the model, the model fitting progress is as following. As we can see, the model can reach about 96% test accuracy in the end.   
+![image.png](https://i.loli.net/2021/11/14/qYNB9I3btLjZ1SW.png)
 
 
 ---
 
 
-## Model Testing<a name="modeltesting"></a>
+## Model Evaluation<a name="modelevaluate"></a>
 
+In this part, I evaluated the model by polt the accuarcy and the loss. The plot is as below:  
+![image.png](https://i.loli.net/2021/11/14/NtSFD7Pxr1uI8BR.png)
+
+According to the figure above, the overall trend for the plot is that with the epoch increasing, the accuracy will increase and the loss will decrease.  
 
 ---
 
