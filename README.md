@@ -42,10 +42,19 @@ With all these questions in mind, I choose to explore the table 7 of these data 
 ## Model Training<a name="modeltraining"></a>
 
 
+---
+
+
 ## Model Testing<a name="modeltesting"></a>
 
 
+---
+
 ## Model Explanation by SHAP<a name="modelexplain"></a>
+
+
+
+---
 
 
 
