@@ -129,8 +129,8 @@ history = model.fit(
   epochs=epochs
 )
 ```
-I set the epoch = 10 and fit the model, the model fitting progress is as following. As we can see, the model can reach about 96% test accuracy in the end.   
-![image.png](https://i.loli.net/2021/11/14/qYNB9I3btLjZ1SW.png)
+I set the epoch = 10 and fit the model, the model fitting progress is as following. As we can see, the model can reach about 100% test accuracy in the end.   
+![image.png](https://i.loli.net/2021/11/14/jmiPXhrC2YZqcIN.png)
 
 
 ---
@@ -142,6 +142,32 @@ In this part, I evaluated the model by polt the accuarcy and the loss. The plot 
 ![image.png](https://i.loli.net/2021/11/14/NtSFD7Pxr1uI8BR.png)
 
 According to the figure above, the overall trend for the plot is that with the epoch increasing, the accuracy will increase and the loss will decrease.  
+<br>  
+Also, I tried to test a model by a random picture of dragonfly which I downloaded from Google.  
+
+![Random_Dragonfly.jpg](https://i.loli.net/2021/11/14/F9JxYD3wUauVO2y.jpg)  
+
+The code of testing part is as below:  
+```python
+# Check the model by a random picture of dragonfly from Google
+pic = "Random_Dragonfly.jpg"
+
+img = tf.keras.utils.load_img(
+    pic, target_size=(img_height, img_width)
+)
+img_array = tf.keras.utils.img_to_array(img)
+img_array = tf.expand_dims(img_array, 0) # Create a batch
+
+predictions = model.predict(img_array)
+score = tf.nn.softmax(predictions[0])
+
+print(
+    "This image most likely belongs to {} with a {:.2f} percent confidence."
+    .format(class_names[np.argmax(score)], 100 * np.max(score))
+)
+```
+And the output is "This image most likely belongs to dragonflies with a 96.31 percent confidence.", which is accurate.  
+
 
 ---
 
