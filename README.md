@@ -129,6 +129,7 @@ history = model.fit(
   epochs=epochs
 )
 ```
+![image.png](https://i.loli.net/2021/11/16/NB2lpwysX1Oerfo.png)  
 I set the epoch = 10 and fit the model, the model fitting progress is as following. As we can see, the model can reach about 100% test accuracy in the end.   
 ![image.png](https://i.loli.net/2021/11/14/B467PvhoN1znrGC.png)
 
